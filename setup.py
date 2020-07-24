@@ -13,6 +13,7 @@ version = '1.0.0'
 # Remember to update local-oldest-requirements.txt when changing the minimum
 # acme/certbot version.
 install_requires = [
+	'requires',
 	'setuptools',
 	'zope.interface',
 ]
@@ -81,16 +82,16 @@ setup(
 		'Topic :: System :: Systems Administration',
 		'Topic :: Utilities',
 	],
-	packages=['certbot_cpanel'],
+	packages=['certbot_dns_cpanel'],
 	include_package_data=True,
 	install_requires=install_requires,
-	keywords=['certbot', 'cpanel'],
+	keywords=['certbot', 'dns', 'cpanel'],
 	entry_points={
 		'certbot.plugins': [
-			'dns-cpanel = certbot_cpanel.authenticator:Authenticator'
+			'dns-cpanel = certbot_dns_cpanel.authenticator:Authenticator'
 		],
 	},
 	tests_require=["pytest"],
-	test_suite='certbot_cpanel',
+	test_suite='certbot_dns_cpanel',
 	cmdclass={"test": PyTest}
 )

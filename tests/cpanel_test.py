@@ -16,9 +16,10 @@ class AuthenticatorTest(unittest.TestCase, dns_test_common.BaseAuthenticatorTest
     # pylint: disable=protected-access
 
     def setUp(self):
-        from certbot_cpanel.authenticator import Authenticator
+        from certbot_dns_cpanel.authenticator import Authenticator
         super(AuthenticatorTest, self).setUp()
-        self.auth = Authenticator({}, 'cpanel')
+        self.config = mock.MagicMock()
+        self.auth = Authenticator(self.config, 'cpanel')
 
     def tearDown(self):
         super(AuthenticatorTest, self).tearDown()

@@ -1,8 +1,17 @@
 """
-The `~certbot_cpanel.dns_cpanel` plugin automates the process of
+The `~certbot_dns_cpanel.dns_cpanel` plugin automates the process of
 completing a ``dns-01`` challenge (`~acme.challenges.DNS01`) by creating, and
 subsequently removing, TXT records using the cPanel ZoneEdit module in API 2.
 
+Named Arguments
+---------------
+
+========================================  =====================================
+``--dns-cpanel-propagation-seconds``      The number of seconds to wait for DNS
+                                          to propagate before asking the ACME
+                                          server to verify the DNS record.
+                                          (Default: 10)
+========================================  =====================================
 
 Credentials
 -----------
@@ -28,4 +37,13 @@ Examples
      --dns-cpanel \\
      -d example.com \\
      -d www.example.com
+
+.. code-block:: bash
+   :caption: To acquire a certificate for ``example.com``, waiting 30 seconds
+             for DNS propagation
+
+   certbot certonly \\
+     --dns-cpanel \\
+     --dns-cpanel-propagation-seconds 30 \\
+     -d example.com
 """
