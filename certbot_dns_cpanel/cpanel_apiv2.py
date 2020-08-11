@@ -83,7 +83,7 @@ class API(object):
 			urllib.parse.urlencode(params)
 		)
 
-	def addZoneRecord(self, domain, name, data):
+	def addZoneRecord(self, domain, name, data, ttl=900):
 		"""Add Zone Record
 
 		Adds a new record to the domain's zone
@@ -107,7 +107,8 @@ class API(object):
 			"domain": domain,
 			"name": name,
 			"type": 'TXT',
-			"txtdata": data
+			"txtdata": data,
+			"ttl": ttl
 		})
 
 		# Make the request
@@ -127,7 +128,7 @@ class API(object):
 		# Return ok
 		return ''
 
-	def editZoneRecord(self, domain, name, data, line):
+	def editZoneRecord(self, domain, name, data, line, ttl=900):
 		"""Edit Zone Record
 
 		Updates an existing record to the domain's zone
@@ -153,7 +154,8 @@ class API(object):
 			"domain": domain,
 			"name": name,
 			"type": 'TXT',
-			"txtdata": data
+			"txtdata": data,
+			"ttl": ttl
 		})
 
 		# Make the request
@@ -221,7 +223,7 @@ class API(object):
 		# Return the records
 		return dRes['cpanelresult']['data']
 
-	def removeZoneRecord(self, domain, name, data, line):
+	def removeZoneRecord(self, domain, line):
 		"""Remove Zone Record
 
 		Removes an existing record from the domain's zone

@@ -114,7 +114,8 @@ class Authenticator(dns_common.DNSAuthenticator):
 			sRes = self._api.addZoneRecord(
 				sDomain,
 				name='%s.' % validation_name,
-				data=validation
+				data=validation,
+				ttl=self.ttl
 			)
 			if sRes:
 				raise errors.PluginError(sRes)
@@ -131,7 +132,8 @@ class Authenticator(dns_common.DNSAuthenticator):
 					sDomain,
 					name='%s.' % validation_name,
 					data=validation,
-					line=mRes['line']
+					line=mRes['line'],
+					ttl=self.ttl
 				)
 				if sRes:
 					raise errors.PluginError(sRes)
