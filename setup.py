@@ -8,7 +8,7 @@ from setuptools import __version__ as setuptools_version
 from setuptools import setup
 from setuptools.command.test import test as TestCommand
 
-version = '1.0.0'
+version = '1.0.1'
 
 # Remember to update local-oldest-requirements.txt when changing the minimum
 # acme/certbot version.
